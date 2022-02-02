@@ -1,0 +1,54 @@
+@mixin position($position: "center") {
+  display: flex;
+
+  @if $position == "center" {
+    /* center position */
+    align-items: center;
+    justify-content: center;
+  } @else if $position == "left" {
+    /* center and left position */
+    align-items: center;
+    justify-content: flex-start;
+  } @else if $position == "right" {
+    /* center and rigth position */
+    align-items: center;
+    justify-content: flex-end;
+  } @else if $position == "top" {
+    /* top and center position */
+    align-items: flex-start;
+    justify-content: center;
+  } @else if $position == "bottom" {
+    /* bottom and center position */
+    align-items: flex-end;
+    justify-content: center;
+  }
+}
+
+@mixin media($device: "null") {
+  @if $device == "mobile" {
+    /* Mobile media */
+    @media screen and (min-width: 0px) and (max-width: 600px) {
+      @content;
+    }
+  } @else if $device == "tablet" {
+    /* Tablet media */
+    @media screen and (min-width: 600px + 1px) and (max-width: 768px) {
+      @content;
+    }
+  } @else if $device == "desktop" {
+    /* Desktop media */
+    @media screen and (min-width: 768px + 1px) {
+      @content;
+    }
+  }
+}
+
+@mixin square($size: "null") {
+  width: $size;
+  height: $size;
+}
+
+@mixin fixed-width($size: "null") {
+  min-width: $size;
+  max-width: $size;
+}
